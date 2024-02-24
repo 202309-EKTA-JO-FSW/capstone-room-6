@@ -1,4 +1,4 @@
-const moongose = require("mongoose");
+const mongoose = require("mongoose");
 const Restaurant = require("../models/Restaurant");
 const Item = require("../models/item");
 const bcrypt = require("bcrypt");
@@ -188,11 +188,25 @@ async function updateMenuItem(req, res) {
 }
 
 async function removeMenuItem(req, res) {
+  const token = req.headers.authorization;
   try {
     const { itemId } = req.params;
-    await itemSchema.findByIdAndRemove(itemId);
+    //validate item ID
+    if (!mongoose.Types.ObjectId.isValid(itemId)) {
+      return res.status(422).json('Invalid item ID');
+    }
+
+    const extractedToken = jwt.verify(token, process.env.JWT_SECRET);
+    const restaurantId = extractedToken.userId;
+    const restaurant = await Restaurant.findById(restaurantId);
+    
+    if(!restaurant){
+      return res.status(401).json('Unauthorized Action');
+    }else{
+      await Item.findByIdAndRemove(itemId);
     res.status(204).json("Item removed successfully");
-  } catch (err) {
+    }
+  } catch(err) {
     res.status(422).json(err.message);
   }
 }
