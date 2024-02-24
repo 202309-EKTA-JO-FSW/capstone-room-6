@@ -198,9 +198,11 @@ async function removeMenuItem(req, res) {
 }
 
 async function getRestaurantInfo(req, res) {
+  const token = req.headers.authorization;
+  const {restaurantId} = req.params;
   try {
-    const { restaurantId } = req.params;
-    const restaurantInfo = await restaurantSchema.findbyId(restaurantId);
+    jwt.verify(token, process.env.JWT_SECRET);
+    const restaurantInfo = await Restaurant.findById(restaurantId);
     res.status(200).json(restaurantInfo);
   } catch (err) {
     res.status(422).json(err.message);
@@ -210,14 +212,8 @@ async function getRestaurantInfo(req, res) {
 async function updateRestaurantInfo(req, res) {
   try {
     const { restaurantId } = req.params;
-    const upadtedRestaurantInfo = await restaurantSchema.findByIdAndUpdate(
-      restaurantId,
-      req.body,
-      { new: true }
-    );
-    res
-      .status(201)
-      .json([upadtedRestaurantInfo, "Profile updated successfully"]);
+    const upadtedRestaurantInfo = await restaurantSchema.findByIdAndUpdate(restaurantId,req.body,{ new: true });
+    res.status(201).json([upadtedRestaurantInfo, "Profile updated successfully"]);
   } catch (err) {
     res.status(422).json(err.message);
   }
