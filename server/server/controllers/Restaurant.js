@@ -199,11 +199,11 @@ async function removeMenuItem(req, res) {
 
 async function getRestaurantInfo(req, res) {
   const token = req.headers.authorization;
-  const {restaurantId} = req.params;
   try {
-    jwt.verify(token, process.env.JWT_SECRET);
-    const restaurantInfo = await Restaurant.findById(restaurantId);
-    res.status(200).json(restaurantInfo);
+    const extractedToken = jwt.verify(token, process.env.JWT_SECRET);
+    const restaurantId = extractedToken.userId;
+    const profile = await Restaurant.findById(restaurantId);
+    res.status(200).json(profile);
   } catch (err) {
     res.status(422).json(err.message);
   }

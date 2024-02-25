@@ -13,7 +13,7 @@ router.get("/search", restaurantController.searchRestaurantItems);
 router.put('/updateitem', restaurantController.updateMenuItem);
 // router.delete('/removeItem/:itemId', restaurantController.removeMenuItem);
 
-router.get('/restaurantInfo/:restaurantId', restaurantController.getRestaurantInfo);
+router.get('/profile/:restaurantId', restaurantController.getRestaurantInfo);
 // router.put('/restaurantInfo/update/:restaurantId', restaurantController.updateRestaurantInfo);
 
 module.exports = router;
