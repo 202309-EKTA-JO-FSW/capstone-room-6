@@ -187,29 +187,28 @@ async function updateMenuItem(req, res) {
   }
 }
 
-async function removeMenuItem(req, res) {
-  const token = req.headers.authorization;
-  try {
-    const { itemId } = req.params;
-    //validate item ID
-    if (!mongoose.Types.ObjectId.isValid(itemId)) {
-      return res.status(422).json('Invalid item ID');
-    }
+async function removeMenuItem(req, res){
+const token = req.headers.authorization;
+const {itemId} = req.params;
 
-    const extractedToken = jwt.verify(token, process.env.JWT_SECRET);
-    const restaurantId = extractedToken.userId;
-    const restaurant = await Restaurant.findById(restaurantId);
-    
-    if(!restaurant){
-      return res.status(401).json('Unauthorized Action');
-    }else{
-      await Item.findByIdAndRemove(itemId);
-    res.status(204).json("Item removed successfully");
+try{
+  const extractedToken = jwt.verify(token, process.env.JWT_SECRET);
+  const restaurantId = extractedToken.userId;
+  const item = await Item.findById(itemId);
+    if (!item){
+    return res.status(404).json('Item not found');
     }
-  } catch(err) {
-    res.status(422).json(err.message);
+  // ensure only the item owner is authorized to delete it
+  if (item.restaurantId.toString() !== restaurantId.toString()){
+   return res.status(403).json('Unauthorized action');
+  }else{ 
+    await Item.findByIdAndRemove(itemId);
+    res.status(402).json("Item removed successfully");
   }
+}catch(err){
+  res.status(422).josn(err.message);
 }
+};
 
 async function getRestaurantInfo(req, res) {
   try {
