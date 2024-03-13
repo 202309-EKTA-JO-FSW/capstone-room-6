@@ -41,12 +41,12 @@ const SignIn = () => {
   return (
     <div className="login">
       <form id="login" onSubmit={handleSubmit}>
-        <label htmlFor="Uname"><b>User Name</b></label>
+        <label htmlFor="Uname"><b>Email</b></label>
         <input 
           type="text" 
           name="Uname" 
           id="Uname" 
-          placeholder="Username" 
+          placeholder="Email" 
           value={email} 
           onChange={(e) => setEmail(e.target.value)} 
         />
