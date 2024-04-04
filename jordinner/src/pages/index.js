@@ -15,14 +15,14 @@ export default function Home() {
   const [restaurants, setRestaurants] = useState([]);
 
   async function getDishes() {
-    const dishesResponse = await fetch("http://localhost:3001/restaurants/get");
+    const dishesResponse = await fetch("https://capstone-backend-production-8314.up.railway.app/restaurants/get");
     const dishesData = await dishesResponse.json();
     setDishes([...dishesData]);
   }
 
   async function getRestaurants() {
     const restaurantsResponse = await fetch(
-      "http://localhost:3001/restaurants/"
+      "https://capstone-backend-production-8314.up.railway.app/restaurants/"
     );
     const restaurantsData = await restaurantsResponse.json();
     setRestaurants([...restaurantsData]);
@@ -38,7 +38,7 @@ export default function Home() {
       <div key={dish.name} className="dishInfo"  style={{maxWidth:"300px", height: "400px"}}>
         <img
           className="dishImage"
-          src={`http://localhost:3001/restaurants/itemimages/${dish.image}`}
+          src={`https://capstone-backend-production-8314.up.railway.app/restaurants/itemimages/${dish.image}`}
           alt=""
           objectFit="contain"
         ></img>
@@ -58,7 +58,7 @@ export default function Home() {
       <div key={restaurant.title} className="restaurantInfo"  style={{maxWidth:"300px", height: "400px"}}>
         <img
           className="restaurantImg"
-          src={`http://localhost:3001/restaurants/images/${restaurant.image}`}
+          src={`https://capstone-backend-production-8314.up.railway.app/restaurants/images/${restaurant.image}`}
           alt={`${restaurant.image}`}
         />
         <p className="restuarantTitle">{restaurant.title}</p>

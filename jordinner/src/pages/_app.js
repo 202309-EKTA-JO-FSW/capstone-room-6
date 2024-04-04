@@ -25,7 +25,7 @@ export default function App({ Component, pageProps }) {
 
   async function check(token) {
     const isTokenValidResponse = await fetch(
-      "http://localhost:3001/customer/checktoken",
+      "https://capstone-backend-production-8314.up.railway.app/customer/checktoken",
       {
         method: "GET",
         headers: {

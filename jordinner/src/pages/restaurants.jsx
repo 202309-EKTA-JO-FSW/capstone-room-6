@@ -6,7 +6,7 @@ export default function Landing() {
     const [isAuthenticated, setIsAuthenticated] = useState(false)
 
     useEffect(() => {
-        fetch('http://localhost:3001/restaurants/')
+        fetch('https://capstone-backend-production-8314.up.railway.app/restaurants/')
             .then(res => res.json())
             .then(data => {
                 setRestaurants(data);
@@ -27,7 +27,7 @@ export default function Landing() {
                 {restaurants.map((restaurant, index) => (
                     <div key={index} className='card'>
                         <h2>{restaurant.title}</h2>
-                        <img src={`http://localhost:3001/restaurants/images/${restaurant.image}`} alt={`Image of ${restaurant.title}`} />
+                        <img src={`https://capstone-backend-production-8314.up.railway.app/restaurants/images/${restaurant.image}`} alt={`Image of ${restaurant.title}`} />
                     </div>
                 ))}
             </div>

@@ -25,7 +25,7 @@ function SignUpIn() {
 
   async function check(token) {
     const isTokenValidResponse = await fetch(
-      "http://localhost:3001/customer/checktoken",
+      "https://capstone-backend-production-8314.up.railway.app/customer/checktoken",
       {
         method: "GET",
         headers: {
@@ -73,7 +73,7 @@ function SignUpIn() {
   const handleSignInSubmit = async (event) => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/customer/signin",
+        "https://capstone-backend-production-8314.up.railway.app/customer/signin",
         signInFormData
       );
       const token = response.data;
@@ -91,7 +91,7 @@ function SignUpIn() {
   const handleSignUpSubmit = async (event) => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/customer/signup",
+        "https://capstone-backend-production-8314.up.railway.app/customer/signup",
         signUpFormData
       );
       const token = response.data;

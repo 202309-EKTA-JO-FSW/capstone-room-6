@@ -40,7 +40,7 @@ useEffect(() => {
 useEffect(()=> {
     async function getEnums() {
         try {
-            const res = await fetch('http://localhost:3001/restaurants/enums', {
+            const res = await fetch('https://capstone-backend-production-8314.up.railway.app/restaurants/enums', {
                 method: 'GET'
             })
         const {location, category} = await res.json()
@@ -105,7 +105,7 @@ if (admin.location.length === 0) {
 }
 
     try {
-        const res = await fetch('http://localhost:3001/restaurants/signup', {
+        const res = await fetch('https://capstone-backend-production-8314.up.railway.app/restaurants/signup', {
             method: 'POST',
             body: formData,
         });

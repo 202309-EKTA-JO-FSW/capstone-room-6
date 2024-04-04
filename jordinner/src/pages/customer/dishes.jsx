@@ -47,7 +47,7 @@ export default function Dishes() {
   ];
   //fetch all dishes from backend
   async function getDishes() {
-    const dishesResponse = await fetch("http://localhost:3001/restaurants/get");
+    const dishesResponse = await fetch("https://capstone-backend-production-8314.up.railway.app/restaurants/get");
     const dishesData = await dishesResponse.json();
     setDishes([...dishesData]);
     setFilteredDishes([...dishesData]);
@@ -78,7 +78,7 @@ export default function Dishes() {
     return (
       <Link href={`/customer/${dish.restaurantId}`}>
       <div className="allDishesInfo" style={{maxWidth:"300px", height: "400px"}}>
-      <img className="dishImage" src={`http://localhost:3001/restaurants/itemimages/${dish.image}`} alt="" objectFit="contain" />
+      <img className="dishImage" src={`https://capstone-backend-production-8314.up.railway.app/restaurants/itemimages/${dish.image}`} alt="" objectFit="contain" />
       <div className='info'>
       <p className="dishName">{dish.name}</p>
       <p>JOD {dish.price.$numberDecimal}</p>

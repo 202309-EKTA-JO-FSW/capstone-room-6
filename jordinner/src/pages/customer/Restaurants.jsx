@@ -20,7 +20,7 @@ function Restaurants() {
   .map((restaurant) => (
     <Link key={restaurant._id} href={`/customer/${restaurant._id}`}>
       <div className="allRestaurantInfo" style={{maxWidth:"300px", height: "400px"}}>
-      <img className="allRestaurantsImg" src={`http://localhost:3001/restaurants/images/${restaurant.image}`} alt={""}/>
+      <img className="allRestaurantsImg" src={`https://capstone-backend-production-8314.up.railway.app/restaurants/images/${restaurant.image}`} alt={""}/>
         <div className='info'>
           <p className="restuarantTitle">{restaurant.title}</p>
           <p>{restaurant.location[0]}</p>
@@ -36,7 +36,7 @@ function Restaurants() {
 
   async function getRestaurants() {
     const restaurantsResponse = await fetch(
-      "http://localhost:3001/restaurants/"
+      "https://capstone-backend-production-8314.up.railway.app/restaurants/"
     );
     const restaurantsData = await restaurantsResponse.json();
     setRestaurants([...restaurantsData]);

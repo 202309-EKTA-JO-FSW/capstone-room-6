@@ -34,7 +34,7 @@ export default function SignIn() {
     }
 
     // Post request to your API endpoint
-      const res = await fetch('http://localhost:3001/restaurants', {
+      const res = await fetch('https://capstone-backend-production-8314.up.railway.app/restaurants', {
         method: 'GET'
     })
     const restaurant = await res.json()
@@ -46,7 +46,7 @@ export default function SignIn() {
     const restaurantId = thisRestaurant._id
      
     try {
-      const response = await fetch('http://localhost:3001/restaurants/signin', {
+      const response = await fetch('https://capstone-backend-production-8314.up.railway.app/restaurants/signin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

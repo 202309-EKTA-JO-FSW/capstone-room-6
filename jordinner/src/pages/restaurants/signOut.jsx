@@ -7,7 +7,7 @@ export default function SignOut() {
   useEffect(() => {
     const handleSignOut = async () => {
       try {
-        const response = await fetch('http://localhost:3001/restaurants/signout', {
+        const response = await fetch('https://capstone-backend-production-8314.up.railway.app/restaurants/signout', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -11,7 +11,7 @@ export default function RestaurantPage() {
   async function getRestaurantData() {
     const restaurantId=window.location.href.split("/").slice(-1)[0]
     const dataResponse = await fetch(
-      `http://localhost:3001/customer/restaurant/${restaurantId}`,{
+      `https://capstone-backend-production-8314.up.railway.app/customer/restaurant/${restaurantId}`,{
         headers:{
           'Content-Type':'application/json',
         }
@@ -25,7 +25,7 @@ export default function RestaurantPage() {
     const token = localStorage.getItem("token");
     const body = { quantity: 1 };
     const addResponse = await fetch(
-      `http://localhost:3001/customer/basket/${dishId}`,
+      `https://capstone-backend-production-8314.up.railway.app/customer/basket/${dishId}`,
       {
         method: "POST",
         headers: {
@@ -65,7 +65,7 @@ export default function RestaurantPage() {
       <div className="dishInfo"  style={{maxWidth:"300px", height: "450px"}}>
         <img
           className="dishImage"
-          src={`http://localhost:3001/restaurants/itemimages/${dish.image}`}
+          src={`https://capstone-backend-production-8314.up.railway.app/restaurants/itemimages/${dish.image}`}
           alt=""
           objectFit="contain" 
         />

@@ -20,7 +20,7 @@ const Menu = () => {
   } else {
     setIsAuthenticated(true)
     const token = newCollection.token
-    fetch('http://localhost:3001/restaurants/menu', {
+    fetch('https://capstone-backend-production-8314.up.railway.app/restaurants/menu', {
     method: 'GET',
     headers: {
       'Authorization': token
@@ -54,7 +54,7 @@ const Menu = () => {
         items.map(item => (
           <div key={item.id} className='card'>
             <h2>{item.name}</h2>
-            <img src={`http://localhost:3001/restaurants/itemimages/${item.image}`} alt={`Image of ${item.name}`} />
+            <img src={`https://capstone-backend-production-8314.up.railway.app/restaurants/itemimages/${item.image}`} alt={`Image of ${item.name}`} />
           </div>
         ))
       )}

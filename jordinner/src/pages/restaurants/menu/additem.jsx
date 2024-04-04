@@ -36,7 +36,7 @@ function AddItem() {
   useEffect(()=> {
     async function getEnums() {
         try {
-            const res = await fetch('http://localhost:3001/restaurants/enums', {
+            const res = await fetch('https://capstone-backend-production-8314.up.railway.app/restaurants/enums', {
                 method: 'GET'
             })
         const {category} = await res.json()
@@ -99,7 +99,7 @@ try {
   const collection = localStorage.getItem('collection')
   const newCollection = JSON.parse(collection)
   const token = newCollection.token
-  const res = await fetch('http://localhost:3001/restaurants/menu/additem', {
+  const res = await fetch('https://capstone-backend-production-8314.up.railway.app/restaurants/menu/additem', {
       method: 'POST',
       body: formData,
       headers: {

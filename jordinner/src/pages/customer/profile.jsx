@@ -15,7 +15,7 @@ const Profile = () => {
     const token = localStorage.getItem("token");
     try {
       const dataResponse = await fetch(
-        "http://localhost:3001/customer/profile",
+        "https://capstone-backend-production-8314.up.railway.app/customer/profile",
         {
           headers: {
             "Content-Type": "application/json",

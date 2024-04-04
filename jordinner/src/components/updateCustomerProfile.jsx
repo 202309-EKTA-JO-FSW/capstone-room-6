@@ -58,7 +58,7 @@ const UpdateCustomerProfile = ({ customerData, setUpdateProfile }) => {
     const body = { ...updatedCustomerData };
     try {
       const updateResponse = await fetch(
-        "http://localhost:3001/customer/profile",
+        "https://capstone-backend-production-8314.up.railway.app/customer/profile",
         {
           method: "PUT",
           headers: {
